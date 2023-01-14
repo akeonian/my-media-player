@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/sorting"
+        android:title="@string/sort">
+        <menu>
+            <item
+                android:id="@+id/a_to_z"
+                android:title="@string/a_to_z" />
+            <item
+                android:id="@+id/z_to_a"
+                android:title="@string/z_to_a" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">My Media Player</string>
+    <string name="media_service_name">MediaService</string>
+    <string name="pause">Pause</string>
+    <string name="album_art">Album Art</string>
+    <string name="sort">Sort</string>
+    <string name="a_to_z">A To Z</string>
+    <string name="z_to_a">Z to A</string>
+    <string name="play">Play</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="songs">Songs</string>
+    <string name="albums">Albums</string>
+    <string name="artists">Artists</string>
+    <string name="genres">Genres</string>
+    <string name="play_pause">Play Pause playback</string>
+    <string name="unknown_title">Unknown Title</string>
+    <string name="unknown_subtitle">Unknown subtitle</string>
+    <string name="permission_required">Permissions Required</string>
+    <string name="message_permission_read">Read permission is needed to access the media in your storage</string>
+
+    <plurals name="songs_count">
+        <item quantity="zero">No Songs</item>
+        <item quantity="one">One Song</item>
+        <item quantity="other">%d Songs</item>
+    </plurals>
+</resources>

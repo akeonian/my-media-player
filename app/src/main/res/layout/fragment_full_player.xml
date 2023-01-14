@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/artCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_between_elements"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/title">
+
+        <ImageView
+            android:id="@+id/albumArt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/album_art"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="@dimen/margin_between_elements"
+        android:textSize="25sp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/artCard"
+        app:layout_constraintBottom_toTopOf="@id/subtitle"
+        tools:text="Main Title of the song"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="@dimen/margin_between_elements"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/seekBar"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Subtitle of this song"/>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:minHeight="10dp"
+        android:maxHeight="10dp"
+        android:thumb="@drawable/thumb"
+        android:splitTrack="false"
+        android:progressDrawable="@drawable/play_progress"
+        android:layout_marginHorizontal="@dimen/margin_between_elements"
+        app:layout_constraintTop_toBottomOf="@id/subtitle"
+        app:layout_constraintBottom_toTopOf="@id/currentTime" />
+
+    <TextView
+        android:id="@+id/currentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_between_elements"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/playPause"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/maxDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_between_elements"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
+        tools:text="00:00" />
+
+    <ImageView
+        android:id="@+id/previous"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/margin_between_elements"
+        android:contentDescription="@string/previous"
+        android:background="?selectableItemBackground"
+        app:srcCompat="@drawable/ic_previous"
+        app:layout_constraintEnd_toStartOf="@id/playPause"
+        app:layout_constraintTop_toTopOf="@id/playPause"
+        app:layout_constraintBottom_toBottomOf="@id/playPause" />
+
+    <ImageView
+        android:id="@+id/playPause"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/play_pause"
+        android:background="?selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_play" />
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/margin_between_elements"
+        android:contentDescription="@string/previous"
+        android:background="?selectableItemBackground"
+        app:srcCompat="@drawable/ic_next"
+        app:layout_constraintTop_toTopOf="@id/playPause"
+        app:layout_constraintBottom_toBottomOf="@id/playPause"
+        app:layout_constraintStart_toEndOf="@id/playPause" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
