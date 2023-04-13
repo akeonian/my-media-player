@@ -15,5 +15,5 @@ interface IMediaServiceConnection {
 
     fun subscribe(parentId: String, callback: MediaBrowserCompat.SubscriptionCallback)
     fun unsubscribe(parentId: String, callback: MediaBrowserCompat.SubscriptionCallback)
-    fun sendPermissionChanged()
+    fun sendAccessGranted()
 }

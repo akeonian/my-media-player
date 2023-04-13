@@ -11,11 +11,13 @@ import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.media.MediaBrowserServiceCompat
-import com.example.mymediaplayer.ACTION_PERMISSION_GRANTED
+import com.example.mymediaplayer.ACTION_ACCESS_GRANTED
 import com.example.mymediaplayer.MediaNotificationManager
 import com.example.mymediaplayer.PENDING_INTENT_FLAG_DEFAULT
+import com.example.mymediaplayer.READ_PERMISSION
 import com.example.mymediaplayer.player.MediaPlayerSP
 import com.example.mymediaplayer.source.LocalMediaSource
 import com.example.mymediaplayer.source.MediaSource
@@ -75,10 +77,7 @@ class MediaPlaybackService: MediaBrowserServiceCompat() {
     }
 
     private fun checkLoadRepository() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, READ_PERMISSION) == PackageManager.PERMISSION_GRANTED) {
             serviceScope.launch { repository.load() }
         }
     }
@@ -101,7 +100,8 @@ class MediaPlaybackService: MediaBrowserServiceCompat() {
     }
 
     override fun onCustomAction(action: String, extras: Bundle?, result: Result<Bundle>) {
-        if (action == ACTION_PERMISSION_GRANTED) {
+        if (action == ACTION_ACCESS_GRANTED) {
+            Log.d(LOG_TAG, "received access granted message")
             checkLoadRepository()
             result.sendResult(null)
             return

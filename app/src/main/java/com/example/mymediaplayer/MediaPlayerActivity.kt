@@ -2,9 +2,6 @@ package com.example.mymediaplayer
 
 import android.media.AudioManager
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -52,10 +49,10 @@ class MediaPlayerActivity: AppCompatActivity() {
                 }
             }
         }
-
         permissionHelper = PermissionHelper(
+            3,
             arrayOf(PermissionHelper.Permission(
-                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                READ_PERMISSION,
                 getString(R.string.message_permission_read),
                 true
             ))
@@ -64,7 +61,7 @@ class MediaPlayerActivity: AppCompatActivity() {
     }
 
     private fun askForPermission() =
-        permissionHelper.askForPermission(this, PERMISSION_REQUEST_CODE) { _,_ -> finish() }
+        permissionHelper.askForPermission(this, PERMISSION_REQUEST_CODE) { finish() }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -73,7 +70,7 @@ class MediaPlayerActivity: AppCompatActivity() {
     ) {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             askForPermission()
-            viewModel.sendPermissionChanged()
+            viewModel.sendAccessGranted()
         }
         else super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }

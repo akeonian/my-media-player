@@ -14,3 +14,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/java/com/example/mymediaplayer/WriteFileTestClass.kt
+/app/src/main/res/layout/activity_write_file_test.xml

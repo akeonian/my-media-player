@@ -11,7 +11,7 @@ import com.example.mymediaplayer.ext.id
 import com.example.mymediaplayer.utils.LogUtils
 
 private const val TAG = "MediaServiceConnection"
-const val ACTION_PERMISSION_GRANTED = "com.example.mymediaplayer.action.permission_granted"
+const val ACTION_ACCESS_GRANTED = "com.example.mymediaplayer.action.access_granted"
 
 class MediaServiceConnection private constructor(
     applicationContext: Context, serviceComponent: ComponentName
@@ -42,8 +42,8 @@ class MediaServiceConnection private constructor(
     override fun unsubscribe(parentId: String, callback: MediaBrowserCompat.SubscriptionCallback) =
         mediaBrowser.unsubscribe(parentId, callback)
 
-    override fun sendPermissionChanged() =
-        mediaBrowser.sendCustomAction(ACTION_PERMISSION_GRANTED, null, null)
+    override fun sendAccessGranted() =
+        mediaBrowser.sendCustomAction(ACTION_ACCESS_GRANTED, null, null)
 
 
     private inner class MediaBrowserConnectionCallback(private val context: Context) :
