@@ -1,9 +1,7 @@
 package com.example.mymediaplayer.helper
 
 import android.app.Activity
-import android.content.DialogInterface
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.mymediaplayer.R
@@ -47,7 +45,6 @@ class PermissionHelper(private val maxAskCount: Int, private val permissions: Ar
                     activity, permissionsToRequest, requestCode)
             }
         }
-        Log.d(TAG, "permissionToRequest=${permissionsToRequest.isNotEmpty()}")
         return hasAllRequired
     }
 
@@ -59,7 +56,6 @@ class PermissionHelper(private val maxAskCount: Int, private val permissions: Ar
      * Returns a Triple
      */
     private fun checkPermissions(activity: Activity): Triple<Boolean, Array<String>, String> {
-        Log.i(TAG, "checking for permissions: ${permissions.map { it.toString() }}")
         var hasAllRequired = true
         val requestMessage = StringBuilder()
         val permissionsToRequest = mutableListOf<String>()

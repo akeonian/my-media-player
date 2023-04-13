@@ -18,6 +18,9 @@
     <string name="unknown_subtitle">Unknown subtitle</string>
     <string name="permission_required">Permissions Required</string>
     <string name="message_permission_read">Read permission is needed to access the media in your storage</string>
+    <string name="placeholder_loading">Loading...</string>
+    <string name="placeholder_error">Error</string>
+    <string name="placeholder_no_files">No files to show</string>
 
     <plurals name="songs_count">
         <item quantity="zero">No Songs</item>

@@ -25,6 +25,9 @@ class MediaDataViewModel(
     private val _navigationEvent = MutableLiveData<Event<String>>()
     val navigationEvent: LiveData<Event<String>> = _navigationEvent
 
+    private val _listState = MutableLiveData(ListState.LOADING)
+    val listState: LiveData<ListState> = _listState
+
     private val subscriptionCallback = object : SubscriptionCallback() {
         override fun onChildrenLoaded(
             parentId: String,
@@ -41,11 +44,14 @@ class MediaDataViewModel(
                     child.isBrowsable
                 )
             }
+            val state = if (itemList.isEmpty()) ListState.EMPTY else ListState.SUCCESS
+            _listState.postValue(state)
             _allSongs.postValue(itemList)
         }
 
         override fun onError(parentId: String) {
             super.onError(parentId)
+            _listState.postValue(ListState.ERROR)
             _allSongs.postValue(emptyList())
         }
     }
@@ -71,6 +77,7 @@ class MediaDataViewModel(
 
     fun refreshData() {
         if (mediaServiceConnection.isConnected.value == true) {
+            _listState.postValue(ListState.LOADING)
             mediaServiceConnection.unsubscribe(
                 parentId, subscriptionCallback)
             mediaServiceConnection.subscribe(
@@ -126,3 +133,7 @@ class MediaDataViewModel(
 }
 
 private const val TAG = "MediaDataViewModel"
+
+enum class ListState {
+    LOADING, EMPTY, ERROR, SUCCESS
+}
